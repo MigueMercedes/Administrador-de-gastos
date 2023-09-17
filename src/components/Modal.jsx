@@ -3,7 +3,7 @@ import CerrarBtn from '../img/cerrar.svg'
 import Mensaje from './Mensaje';
 
 
-const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar}) => {
+const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar, setGastoEditar}) => {
 
     const [id, setId] = useState('');
     const [mensaje, setMensaje] = useState('');
@@ -18,12 +18,14 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar
         if(Object.keys(gastoEditar).length > 0){
             setGasto(gastoEditar)
             setId(gastoEditar.id)
+            setFecha(gastoEditar.fecha)
         }
     }, []);
 
     const handleOcultarModalClick = () => {
         
         setAnimarModal(false);
+        setGastoEditar({})
         setTimeout(() => {
             setModal(false);
         }, 500);
